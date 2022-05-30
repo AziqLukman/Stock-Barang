@@ -182,10 +182,10 @@ require 'cek.php';
                         </div> -->
                         <div class="card mb-4">
                             <div class="card-header">
-                            <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <!-- Button to Open the Modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                 Tambah Barang
-                            </button>
+                                </button>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -242,29 +242,30 @@ require 'cek.php';
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                Modal body..
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
-            </div>
-        </div>
-        </div>
+      <!-- Modal body -->
+      <from method="post">
+      <div class="modal-body">
+        <input type="text" name="namabarang" placeholder="Nama Barang" class="form-control" required>
+        <br>
+        <input type="text" name="deskripsi" placeholder="Deskripsi Barang" class="form-control" required>
+        <br>
+        <input type="number" name="stock" placeholder="Stock Barang" class="form-control" required>
+        <br>
+        <button type="submit" class="btn btn-primary" name="addnewbarang">Submit</button>
+      </div>
+</from>
+    </div>
+  </div>
+</div>
 </html>
