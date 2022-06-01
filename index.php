@@ -249,12 +249,12 @@ require 'cek.php';
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title">Tambah Barang</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
-      <from method="post">
+      <from method="POST">
       <div class="modal-body">
         <input type="text" name="namabarang" placeholder="Nama Barang" class="form-control" required>
         <br>
@@ -262,9 +262,9 @@ require 'cek.php';
         <br>
         <input type="number" name="stock" placeholder="Stock Barang" class="form-control" required>
         <br>
-        <button type="submit" class="btn btn-primary" name="addnewbarang">Submit</button>
+        <button type="submit" class="btn btn-primary" name="addnewBarang">Submit</button>
       </div>
-</from>
+    </from>
     </div>
   </div>
 </div>
