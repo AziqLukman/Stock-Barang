@@ -19,10 +19,10 @@ require 'cek.php';
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Toko Tembakau</a>
+            <a class="navbar-brand ps-3" href="index.php">Toko Alat Tulis</a>
             <!-- Sidebar Toggle-->
-            <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!- Navbar Search-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
             <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
@@ -47,10 +47,21 @@ require 'cek.php';
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+                            <div class="sb-sidenav-menu-heading">Pilihan Menu</div>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang
+                            </a>
+                            <a class="nav-link" href="masuk.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Barang Masuk
+                            </a>
+                            <a class="nav-link" href="keluar.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Barang Keluar
+                            </a>
+                            <a class="nav-link" href="logout.php">
+                                Logout
                             </a>
                             <!-- <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -96,17 +107,6 @@ require 'cek.php';
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div> -->
-                            <a class="nav-link" href="masuk.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Barang Masuk
-                            </a>
-                            <a class="nav-link" href="keluar.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Barang Keluar
-                            </a>
-                            <a class="nav-link" href="logout.php">
-                                Logout
-                            </a>
                         </div>
                     </div>
                     <!-- <div class="sb-sidenav-footer">
@@ -184,14 +184,14 @@ require 'cek.php';
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                Tambah Barang
+                                    Tambah Barang
                                 </button>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>No.</th>
                                             <th>Nama Barang</th>
                                             <th>Deskripsi</th>
                                             <th>Stock</th>
@@ -242,30 +242,34 @@ require 'cek.php';
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Tambah Barang</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-      <!-- Modal body -->
-      <from method="POST">
-      <div class="modal-body">
-        <input type="text" name="namabarang" placeholder="Nama Barang" class="form-control" required>
-        <br>
-        <input type="text" name="deskripsi" placeholder="Deskripsi Barang" class="form-control" required>
-        <br>
-        <input type="number" name="stock" placeholder="Stock Barang" class="form-control" required>
-        <br>
-        <button type="submit" class="btn btn-primary" name="addnewBarang">Submit</button>
-      </div>
-    </from>
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Tambah Stock Barang</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <form method="POST">
+        <div class="modal-body">
+            <input type="text" name="namabarang" placeholder="Nama Barang" class="form-control" required>
+            <br>
+            <input type="text" name="deskripsi" placeholder="Deskripsi Barang" class="form-control" required>
+            <br>
+            <input type="number" name="stock" placeholder="Jumlah Stock" class="form-control" required>
+            <br>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" name="addnewbarang">Simpan</button>
+            </div>
+        </div>
+        </form>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
+
 </html>

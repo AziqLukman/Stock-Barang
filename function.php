@@ -8,7 +8,7 @@ $conn = mysqli_connect("localhost","root","","stokbarang");
 // }
 
 //menambah barang baru
-if(isset($_POST['addnewBarang'])){
+if(isset($_POST['addnewbarang'])){
     $namabarang = $_POST['namabarang'];
     $deskripsi = $_POST['deskripsi'];
     $stock = $_POST['stock'];
@@ -16,7 +16,8 @@ if(isset($_POST['addnewBarang'])){
     $addtotable = mysqli_query($conn,"INSERT INTO stock (namabarang,deskripsi,stock) VALUES('$namabarang','$deskripsi','$stock')");
     if($addtotable){
         header('location:index.php');
-    }else{
+    }
+    else{
         echo'Gagal Menambahkan Barang';
         header('location:index.php');
     }
