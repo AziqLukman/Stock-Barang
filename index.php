@@ -225,42 +225,43 @@ require 'cek.php';
                                             <td><?=$deskripsi;?></td>
                                             <td><?=$stock;?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idb;?>">
-                                                    Edit
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?$idb;?>"> Edit
                                                 </button>
-                                                <input type="hidden" name="idbarangygmaudihapus" value="<?=idb;?>">
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
-                                                    Delete
+                                                <input type="hidden" name="idbarangygmaudihapus" value="<?=$idb;?>">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">  Delete
                                                 </button>
                                             </td>
                                         </tr>
                                             <!-- The Modal -->
                                             <div class="modal fade" id="edit<?=idb;?>">
-                                                <div class="modal-dialog">
+                                            <div class="modal-dialog">
                                                 <div class="modal-content">
 
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Tambah Barang</h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-
-                                                    <!-- Modal body -->
-                                                    <form method="POST">
-                                                    <div class="modal-body">
-                                                        <input type="text" name="namabarang" value="<?=$namabarang;?>" class="form-control" required>
-                                                        <br>
-                                                        <input type="text" name="deskripsi" value="<?=$deskripsi;?>" class="form-control" required>
-                                                        <br>
-                                                        <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" name="updatebarang">Simpan</button>
-                                                    </div>
-                                                    </form>
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Tambah Barang</h4>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                 </div>
+
+                                                <!-- Modal body -->
+                                                <form method="POST">
+                                                <div class="modal-body">
+                                                    <input type="text" name="namabarang" placeholder="<?=$namabarang;?>" class="form-control" required>
+                                                    <br>
+                                                    <input type="text" name="deskripsi" placeholder="<?=$deskripsi;?>" class="form-control" required>
+                                                    <br>
+                                                    <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" name="addnewbarang">Simpan</button>
+                                                    </div>
+                                                </div>
+                                                </form>
                                                 </div>
                                             </div>
+                                            </div>
+
                                         <?php
-                                            };
+                                        };
+
                                         ?>
 
                                     </tbody>
