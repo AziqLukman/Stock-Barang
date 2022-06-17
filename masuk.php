@@ -226,14 +226,14 @@ require 'cek.php';
                                             <td><?=$qty;?></td>
                                             <td><?=$keterangan;?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idb;?>"> Edit
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idm;?>"> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idb;?>">  Delete
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idm;?>">  Delete
                                                 </button>
                                             </td>
                                         </tr>
                                         <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?=$idb;?>">
+                                        <div class="modal fade" id="edit<?=$idm;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -246,7 +246,7 @@ require 'cek.php';
                                                 <!-- Modal body -->
                                                 <form method="POST">
                                                 <div class="modal-body">
-                                                    <input type="text" name="keterangan" placeholder="<?=$keterangan;?>" class="form-control" required>
+                                                    <input type="text" name="keterangan" value="<?=$keterangan;?>" class="form-control" required>
                                                     <br>
                                                     <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required>
                                                     <br>
@@ -261,7 +261,7 @@ require 'cek.php';
                                             </div>
                                             </div>
                                             <!-- Delete Modal -->
-                                            <div class="modal fade" id="delete<?=$idb;?>">
+                                            <div class="modal fade" id="delete<?=$idm;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
