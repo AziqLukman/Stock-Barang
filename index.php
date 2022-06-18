@@ -184,7 +184,7 @@ require 'cek.php';
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    Tambah Barang
+                                    Tambah Stock
                                 </button>
                             </div>
                             <div class="card-body">
@@ -242,18 +242,18 @@ require 'cek.php';
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Edit Barang</h4>
+                <h4 class="modal-title">Edit Stock Barang</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
             <form method="POST">
             <div class="modal-body">
-                <input type="text" name="kategori" placeholder="<?=$kategori;?>" class="form-control" required>
+                <input type="text" name="kategori" value="<?=$kategori;?>" class="form-control" required>
                 <br>
-                <input type="text" name="jenis" placeholder="<?=$jenis;?>" class="form-control" required>
+                <input type="text" name="jenis" value="<?=$jenis;?>" class="form-control" required>
                 <br>
-                <input type="text" name="merk" placeholder="<?=$merk;?>" class="form-control" required>
+                <input type="text" name="merk" value="<?=$merk;?>" class="form-control" required>
                 <br>
                 <input type="number" name="stock" placeholder="<?=$stock;?>" class="form-control" required>
                 <br>
@@ -274,14 +274,14 @@ require 'cek.php';
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Hapus barang?</h4>
+                <h4 class="modal-title">Hapus Stock Barang</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
             <form method="POST">
             <div class="modal-body">
-                Apakah yakin ingin menghapus <?=$kategori;?>?
+                Apakah yakin ingin menghapus <?=$jenis;?>?
                 <input type="hidden" name="idb" value="<?=$idb;?>">
                 <br>
                 <br>

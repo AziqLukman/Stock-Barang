@@ -238,59 +238,69 @@ require 'cek.php';
                                             </td>
                                         </tr>
 
-                                        <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?=$idbm;?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
+        <!--The Modal Edit -->
+        <div class="modal fade" id="edit<?=$idbm;?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Barang</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Barang Masuk</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-                                                <!-- Modal body -->
-                                                <form method="POST">
-                                                <div class="modal-body">
-                                                    <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control" required>
-                                                    <br>
-                                                    <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required>
-                                                    <br>
-                                                    <input type="hidden" name="idb" value="<?=$idb;?>">
-                                                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
-                                                    <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" name="updatebarangmasuk">Simpan</button>
-                                                    </div>
-                                                </div>
-                                                </form>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <!-- Delete Modal -->
-                                            <div class="modal fade" id="delete<?=$idbm;?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
+                <!-- Modal body -->
+                <form method="POST">
+                <div class="modal-body">
+                    <!-- <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control" required> -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="penerima" type="text" placeholder="Penerima" value="<?=$penerima;?>" required>
+                        <label>Penerima</label>
+                    </div>
+                    <br>
+                    <!-- <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required> -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="qty" type="number" placeholder="Quantity" value="<?=$qty;?>">
+                        <label>Quantity</label>
+                    </div>
+                    <br>
+                    <input type="hidden" name="idb" value="<?=$idb;?>">
+                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" name="updatebarangmasuk">Simpan</button>
+                    </div>
+                </div>
+                </form>
+                </div>
+            </div>
+            </div>
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus barang?</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
+            <!-- The Modal Delete -->
+            <div class="modal fade" id="delete<?=$idbm;?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                                                <!-- Modal body -->
-                                                <form method="POST">
-                                                <div class="modal-body">
-                                                    Apakah yakin ingin menghapus <?=$kategori;?>?
-                                                    <input type="hidden" name="idb" value="<?=$idb;?>">
-                                                    <input type="hidden" name="qty" value="<?=$qty;?>">
-                                                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
-                                                    <br>
-                                                    <br>
-                                                    <button type="submit" class="btn btn-danger" name="hapusbarangmasuk">Hapus</button>
-                                                </div>
-                                                </form>
-                                                </div>
-                                            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus Barang Masuk</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <form method="POST">
+                <div class="modal-body">
+                    Apakah yakin ingin menghapus <?=$jenis;?> ?
+                    <input type="hidden" name="idb" value="<?=$idb;?>">
+                    <input type="hidden" name="qty" value="<?=$qty;?>">
+                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-danger" name="hapusbarangmasuk">Hapus</button>
+                </div>
+                </form>
+                </div>
+            </div>
+            </div>
                                         <?php
                                             };
                                         ?>
@@ -315,7 +325,7 @@ require 'cek.php';
             </div>
         </div>
 
-        <!-- The Modal -->
+        <!-- The Modal Tambah -->
     <div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -330,7 +340,7 @@ require 'cek.php';
         <form method="POST">
         <div class="modal-body">
             
-            <select name="barangnya" class="form-control">
+            <!-- <select name="kategorinya" class="form-control">
                 <?php
                     $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
                     while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
@@ -345,8 +355,8 @@ require 'cek.php';
                 <?php
                     }
                 ?>
-            </select>
-            <br>
+            </select> -->
+            
             <select name="jenisnya" class="form-control">
                 <?php
                     $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
