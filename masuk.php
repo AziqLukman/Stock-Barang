@@ -191,10 +191,12 @@ require 'cek.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>No. Transaksi</th>
                                             <th>Tanggal</th>
-                                            <th>Nama Barang</th>
-                                            <th>Deskripsi</th>
-                                            <th>keterangan</th>
+                                            <th>Kategori</th>
+                                            <th>Jenis</th>
+                                            <th>Qty</th>
+                                            <th>Penerima</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -210,30 +212,34 @@ require 'cek.php';
                                     </tfoot> -->
                                     <tbody>
                                     <?php
-                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM masuk m, stock s WHERE s.idbarang = m.idbarang");
+                                            $ambilsemuadatastock = mysqli_query($conn,"SELECT * FROM barangmasuk m, stockbarang s WHERE s.idbarang = m.idbarang");
                                             while($data=mysqli_fetch_array($ambilsemuadatastock)){
                                                 $idb = $data['idbarang'];
-                                                $idm = $data['idmasuk'];
+                                                $idbm = $data['idbarangmasuk'];
                                                 $tanggal = $data['tanggal'];
-                                                $namabarang = $data['namabarang'];
+                                                $kategori = $data['kategori'];
+                                                $jenis = $data['jenis'];
                                                 $qty = $data['qty'];
-                                                $keterangan = $data['keterangan'];
+                                                $penerima = $data['penerima'];
                                         ?>
 
                                         <tr>
-                                            <td><?=$tanggal ;?></td>
-                                            <td><?=$namabarang;?></td>
+                                            <td><?=$idbm;?></td>
+                                            <td><?=$tanggal;?></td>
+                                            <td><?=$kategori;?></td>
+                                            <td><?=$jenis;?></td>
                                             <td><?=$qty;?></td>
-                                            <td><?=$keterangan;?></td>
+                                            <td><?=$penerima;?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idm;?>"> Edit
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idbm;?>"> Edit
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idm;?>">  Delete
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idbm;?>">  Delete
                                                 </button>
                                             </td>
                                         </tr>
+
                                         <!-- Edit Modal -->
-                                        <div class="modal fade" id="edit<?=$idm;?>">
+                                        <div class="modal fade" id="edit<?=$idbm;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -246,12 +252,12 @@ require 'cek.php';
                                                 <!-- Modal body -->
                                                 <form method="POST">
                                                 <div class="modal-body">
-                                                    <input type="text" name="keterangan" value="<?=$keterangan;?>" class="form-control" required>
+                                                    <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control" required>
                                                     <br>
                                                     <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required>
                                                     <br>
                                                     <input type="hidden" name="idb" value="<?=$idb;?>">
-                                                    <input type="hidden" name="idm" value="<?=$idm;?>">
+                                                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
                                                     <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary" name="updatebarangmasuk">Simpan</button>
                                                     </div>
@@ -261,7 +267,7 @@ require 'cek.php';
                                             </div>
                                             </div>
                                             <!-- Delete Modal -->
-                                            <div class="modal fade" id="delete<?=$idm;?>">
+                                            <div class="modal fade" id="delete<?=$idbm;?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
 
@@ -274,10 +280,10 @@ require 'cek.php';
                                                 <!-- Modal body -->
                                                 <form method="POST">
                                                 <div class="modal-body">
-                                                    Apakah yakin ingin menghapus <?=$namabarang;?>?
+                                                    Apakah yakin ingin menghapus <?=$kategori;?>?
                                                     <input type="hidden" name="idb" value="<?=$idb;?>">
                                                     <input type="hidden" name="qty" value="<?=$qty;?>">
-                                                    <input type="hidden" name="idm" value="<?=$idm;?>">
+                                                    <input type="hidden" name="idbm" value="<?=$idbm;?>">
                                                     <br>
                                                     <br>
                                                     <button type="submit" class="btn btn-danger" name="hapusbarangmasuk">Hapus</button>
@@ -308,16 +314,8 @@ require 'cek.php';
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    </body>
 
-    <!-- The Modal -->
+        <!-- The Modal -->
     <div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -334,13 +332,31 @@ require 'cek.php';
             
             <select name="barangnya" class="form-control">
                 <?php
-                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stock");
+                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
                     while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
-                        $namabarangnya = $fetcharray['namabarang'];
+                        $kategorinya = $fetcharray['kategori'];
                         $idbarangnya = $fetcharray['idbarang'];
                 ?>
+                
                     <option value="<?=$idbarangnya;?>">
-                                   <?=$namabarangnya;?>
+                                   <?=$kategorinya;?>
+                    </option>
+                
+                <?php
+                    }
+                ?>
+            </select>
+            <br>
+            <select name="jenisnya" class="form-control">
+                <?php
+                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
+                    while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                        $jenisnya = $fetcharray['jenis'];
+                        $idbarangnya = $fetcharray['idbarang'];
+                ?>
+                
+                    <option value="<?=$idbarangnya;?>">
+                                   <?=$jenisnya;?>
                     </option>
                 
                 <?php
@@ -360,5 +376,14 @@ require 'cek.php';
         </div>
     </div>
     </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
 
 </html>

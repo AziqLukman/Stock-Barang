@@ -5,7 +5,7 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    $cekdatabase = mysqli_query($conn,"SELECT * FROM login WHERE email='$email' and password='$password'");
+    $cekdatabase = mysqli_query($conn,"SELECT * FROM akun WHERE email='$email' and password='$password'");
     $hitung = mysqli_num_rows($cekdatabase);
 
     if($hitung>0){
