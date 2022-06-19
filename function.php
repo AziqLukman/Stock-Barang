@@ -120,7 +120,7 @@ if(isset($_POST['updatebarangmasuk'])){
 
     if($qty>$qtyskrng){
         $selisih = $qty - $qtyskrng;
-        $kurangin = $stockskrng - $selisih;
+        $kurangin = $stockskrng + $selisih;
         $kurangistocknya = mysqli_query($conn, "UPDATE stockbarang SET stock='$kurangin' WHERE idbarang='$idb'");
         $updatenya = mysqli_query($conn,"UPDATE barangmasuk SET qty='$qty', penerima='$penerima' WHERE idbarangmasuk='$idbm'");
             if($kurangistocknya && $updatenya){
@@ -131,8 +131,8 @@ if(isset($_POST['updatebarangmasuk'])){
                 header('location:masuk.php');
             } 
     } else{
-        $selisih = $qtyskrng + $qty;
-        $kurangin = $stockskrng + $selisih;
+        $selisih = $qtyskrng - $qty;
+        $kurangin = $stockskrng - $selisih;
 
         $kurangistocknya = mysqli_query($conn, "UPDATE stockbarang SET stock='$kurangin' WHERE idbarang='$idb'");
         $updatenya = mysqli_query($conn,"UPDATE barangmasuk SET qty='$qty', penerima='$penerima' WHERE idbarangmasuk='$idbm'");
