@@ -19,7 +19,7 @@ require 'cek.php';
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.php">Toko Alat Tulis</a>
+            <a class="navbar-brand ps-3" href="index.php">ALAT TULIS BERKAH</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -249,13 +249,23 @@ require 'cek.php';
             <!-- Modal body -->
             <form method="POST">
             <div class="modal-body">
-                <input type="text" name="kategori" value="<?=$kategori;?>" class="form-control" required>
-                <br>
-                <input type="text" name="jenis" value="<?=$jenis;?>" class="form-control" required>
-                <br>
-                <input type="text" name="merk" value="<?=$merk;?>" class="form-control" required>
-                <br>
-                <input type="number" name="stock" placeholder="<?=$stock;?>" class="form-control" required>
+            <p class="text-center fs-5">Produk <?=$kategori;?> <?=$jenis;?> <?=$merk;?></p>
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="kategori" type="text" placeholder="Kategori Produk" value="<?=$kategori;?>" required>
+                    <label>Kategori Produk</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="jenis" type="text" placeholder="Jenis Produk" value="<?=$jenis;?>" required>
+                    <label>Jenis Produk</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="merk" type="text" placeholder="Merk Produk" value="<?=$merk;?>" required>
+                    <label>Merk Produk</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="stock" type="number" placeholder="Jumlah Stock" value="<?=$stock;?>" required>
+                    <label>Jumlah Stock</label>
+                </div>
                 <br>
                 <input type="hidden" name="idb" value="<?=$idb;?>">
                 <div class="modal-footer">
@@ -281,10 +291,11 @@ require 'cek.php';
             <!-- Modal body -->
             <form method="POST">
             <div class="modal-body">
-                Apakah yakin ingin menghapus <?=$jenis;?>?
+            <p class="text-center fs-5">Apakah yakin ingin menghapus <?=$kategori;?> <?=$jenis;?> <?=$merk;?> ?</p>
                 <input type="hidden" name="idb" value="<?=$idb;?>">
-                <br>
-                <br>
+            <div class="modal-header">
+            </div>
+            <br>
                 <button type="submit" class="btn btn-danger" name="hapusbarang">Hapus</button>
             </div>
             </form>
@@ -332,13 +343,22 @@ require 'cek.php';
         <!-- Modal body -->
         <form method="POST">
         <div class="modal-body">
-            <input type="text" name="kategori" placeholder="Kategori Barang" class="form-control" required>
-            <br>
-            <input type="text" name="jenis" placeholder="Jenis Barang" class="form-control" required>
-            <br>
-            <input type="text" name="merk" placeholder="Merk Barang" class="form-control" required>
-            <br>
-            <input type="number" name="stock" placeholder="Jumlah Stock" class="form-control" required>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="kategori" type="text" placeholder="Kategori Produk" required>
+                <label>Kategori Produk</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="jenis" type="text" placeholder="Jenis Produk" required>
+                <label>Jenis Produk</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="merk" type="text" placeholder="Merk Produk" required>
+                <label>Merk Produk</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="stock" type="number" placeholder="Jumlah Stock" required>
+                <label>Jumlah Stock</label>
+            </div>
             <br>
             <div class="modal-footer">
             <button type="submit" class="btn btn-primary" name="addstockbarang">Simpan</button>

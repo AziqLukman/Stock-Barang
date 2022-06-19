@@ -191,10 +191,10 @@ require 'cek.php';
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>No. Transaksi</th>
-                                            <th>Tanggal</th>
-                                            <th>jenis</th>
+                                            <th>Waktu Transaksi</th>
+                                            <th>Kategori</th>
                                             <th>Jenis</th>
+                                            <th>Merk</th>
                                             <th>Jumlah</th>
                                             <th>Pembeli</th>
                                             <th>Aksi</th>
@@ -219,15 +219,16 @@ require 'cek.php';
                                                 $tanggal = $data['tanggal'];
                                                 $kategori = $data['kategori'];
                                                 $jenis = $data['jenis'];
+                                                $merk = $data['merk'];
                                                 $jumlah = $data['jumlah'];
                                                 $pembeli = $data['pembeli'];
                                         ?>
 
                                         <tr>
-                                            <td><?=$idbk;?></td>
-                                            <td><?=$tanggal ;?></td>
+                                            <td><?=$tanggal;?></td>
                                             <td><?=$kategori;?></td>
                                             <td><?=$jenis;?></td>
+                                            <td><?=$merk;?></td>
                                             <td><?=$jumlah;?></td>
                                             <td><?=$pembeli;?></td>
                                             <td>
@@ -252,6 +253,7 @@ require 'cek.php';
                 <!-- Modal body -->
                 <form method="POST">
                 <div class="modal-body">
+                <p class="text-center fs-5">Produk <?=$kategori;?> <?=$jenis;?> <?=$merk;?></p>
                     <div class="form-floating mb-3">
                         <input class="form-control" name="jumlah" type="number" placeholder="Jumlah" value="<?=$jumlah;?>" required>
                         <label>Jumlah</label>
@@ -279,19 +281,20 @@ require 'cek.php';
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Hapus barang Keluar</h4>
+                    <h4 class="modal-title">Hapus Barang Keluar</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->
                 <form method="POST">
                 <div class="modal-body">
-                    Apakah yakin ingin menghapus <?=$jenis;?> ?
+                <p class="text-center fs-5">Apakah yakin ingin menghapus <?=$kategori;?> <?=$jenis;?> <?=$merk;?> ?</p>
                     <input type="hidden" name="idb" value="<?=$idb;?>">
                     <input type="hidden" name="jumlah" value="<?=$jumlah;?>">
                     <input type="hidden" name="idbk" value="<?=$idbk;?>">
-                    <br>
-                    <br>
+                <div class="modal-header">
+                </div>
+                <br>
                     <button type="submit" class="btn btn-danger" name="hapusbarangkeluar">Hapus</button>
                 </div>
                 </form>
@@ -336,15 +339,20 @@ require 'cek.php';
         <!-- Modal body -->
         <form method="POST">
         <div class="modal-body">
+        <label>Produk</label>
         <select name="jenisnya" class="form-control">
                 <?php
-                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
+                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang ORDER BY kategori ASC");
                     while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                        $kategorinya = $fetcharray['kategori'];
                         $jenisnya = $fetcharray['jenis'];
+                        $merk = $fetcharray['merk'];
                         $idbarangnya = $fetcharray['idbarang'];
                 ?>
                     <option value="<?=$idbarangnya;?>">
+                                   <?=$kategorinya;?>
                                    <?=$jenisnya;?>
+                                   <?=$merk;?>
                     </option>
                 
                 <?php

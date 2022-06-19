@@ -119,7 +119,7 @@ if(isset($_POST['updatebarangmasuk'])){
     $qtyskrng = $qtynya['qty'];
 
     if($qty>$qtyskrng){
-        $selisih = $qty-$qtyskrng;
+        $selisih = $qty - $qtyskrng;
         $kurangin = $stockskrng - $selisih;
         $kurangistocknya = mysqli_query($conn, "UPDATE stockbarang SET stock='$kurangin' WHERE idbarang='$idb'");
         $updatenya = mysqli_query($conn,"UPDATE barangmasuk SET qty='$qty', penerima='$penerima' WHERE idbarangmasuk='$idbm'");
@@ -131,7 +131,7 @@ if(isset($_POST['updatebarangmasuk'])){
                 header('location:masuk.php');
             } 
     } else{
-        $selisih = $qtyskrng+$qty;
+        $selisih = $qtyskrng + $qty;
         $kurangin = $stockskrng + $selisih;
 
         $kurangistocknya = mysqli_query($conn, "UPDATE stockbarang SET stock='$kurangin' WHERE idbarang='$idb'");
@@ -156,7 +156,7 @@ if(isset($_POST['hapusbarangmasuk'])){
     $data = mysqli_fetch_array($getdatastock);
     $stok = $data['stock'];
 
-    $selisih = $stok-$qty;
+    $selisih = $stok - $qty;
 
     $update = mysqli_query($conn,"UPDATE stockbarang SET stock ='$selisih' WHERE idbarang='$idb'");
     $hapusdata = mysqli_query($conn,"DELETE FROM barangmasuk WHERE idbarangmasuk='$idbm'");
@@ -169,6 +169,16 @@ if(isset($_POST['hapusbarangmasuk'])){
     } 
 }
 
+//Menghapus history barang masuk
+// if(isset($_POST['hapusbarangkeluar'])){
+//     $idb = $_POST['idb'];
+//     $qty = $_POST['qty'];
+//     $idbm = $_POST['idbm'];
+
+//     $truncate = mysqli_query($conn,"TRUNCATE TABLE books FROM barangmasuk;");
+// }
+
+
 //Mengubah data barang keluar
 if(isset($_POST['updatebarangkeluar'])){
     $idb = $_POST['idb'];
@@ -180,9 +190,9 @@ if(isset($_POST['updatebarangkeluar'])){
     $stocknya = mysqli_fetch_array($lihatstock);
     $stockskrng = $stocknya['stock'];
 
-    $jumlahskrng = mysqli_query($conn, "SELECT * FROM barangkeluar WHERE idkeluar='$idk'");
+    $jumlahskrng = mysqli_query($conn, "SELECT * FROM barangkeluar WHERE idbarangkeluar='$idbk'");
     $jumlahnya = mysqli_fetch_array($jumlahskrng);
-    $jumlahskrng = $jumlahnya['qty'];
+    $jumlahskrng = $jumlahnya['jumlah'];
 
     if($jumlah>$jumlahskrng){
         $selisih = $jumlah - $jumlahskrng;
@@ -234,4 +244,5 @@ if(isset($_POST['hapusbarangkeluar'])){
         header('location:keluar.php');
     } 
 }
+
 ?>

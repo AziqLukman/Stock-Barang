@@ -182,19 +182,24 @@ require 'cek.php';
                         </div> -->
                         <div class="card mb-4">
                             <div class="card-header">
-                                <!-- Button to Open the Modal -->
+                                <!-- Button to Open the Modal Tambah -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                                     Tambah Masukan
                                 </button>
+
+                                <!-- Button Truncate -->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-danger me-md-2"  name="hapushistorymasuk">Hapus History</button>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>No. Transaksi</th>
-                                            <th>Tanggal</th>
+                                            <th>Waktu Transaksi</th>
                                             <th>Kategori</th>
                                             <th>Jenis</th>
+                                            <th>Merk</th>
                                             <th>Qty</th>
                                             <th>Penerima</th>
                                             <th>Aksi</th>
@@ -219,15 +224,16 @@ require 'cek.php';
                                                 $tanggal = $data['tanggal'];
                                                 $kategori = $data['kategori'];
                                                 $jenis = $data['jenis'];
+                                                $merk = $data['merk'];
                                                 $qty = $data['qty'];
                                                 $penerima = $data['penerima'];
                                         ?>
 
                                         <tr>
-                                            <td><?=$idbm;?></td>
                                             <td><?=$tanggal;?></td>
                                             <td><?=$kategori;?></td>
                                             <td><?=$jenis;?></td>
+                                            <td><?=$merk;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$penerima;?></td>
                                             <td>
@@ -252,12 +258,11 @@ require 'cek.php';
                 <!-- Modal body -->
                 <form method="POST">
                 <div class="modal-body">
-                    <!-- <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required> -->
+                <p class="text-center fs-5">Produk <?=$kategori;?> <?=$jenis;?> <?=$merk;?></p>
                     <div class="form-floating mb-3">
                         <input class="form-control" name="qty" type="number" placeholder="Quantity" value="<?=$qty;?>" required>
                         <label>Quantity</label>
                     </div>
-                    <!-- <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control" required> -->
                     <div class="form-floating mb-3">
                         <input class="form-control" name="penerima" type="text" placeholder="Penerima" value="<?=$penerima;?>" required>
                         <label>Penerima</label>
@@ -288,12 +293,13 @@ require 'cek.php';
                 <!-- Modal body -->
                 <form method="POST">
                 <div class="modal-body">
-                    Apakah yakin ingin menghapus <?=$jenis;?> ?
+                <p class="text-center fs-5">Apakah yakin ingin menghapus <?=$kategori;?> <?=$jenis;?> <?=$merk;?> ?</p>
                     <input type="hidden" name="idb" value="<?=$idb;?>">
                     <input type="hidden" name="qty" value="<?=$qty;?>">
                     <input type="hidden" name="idbm" value="<?=$idbm;?>">
-                    <br>
-                    <br>
+                <div class="modal-header">
+                </div>
+                <br>
                     <button type="submit" class="btn btn-danger" name="hapusbarangmasuk">Hapus</button>
                 </div>
                 </form>
@@ -338,17 +344,21 @@ require 'cek.php';
         <!-- Modal body -->
         <form method="POST">
         <div class="modal-body">
-            
+        <label>Produk</label>
             <select name="jenisnya" class="form-control">
                 <?php
-                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
+                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang ORDER BY kategori ASC");
                     while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                        $kategorinya = $fetcharray['kategori'];
                         $jenisnya = $fetcharray['jenis'];
+                        $merk = $fetcharray['merk'];
                         $idbarangnya = $fetcharray['idbarang'];
                 ?>
                 
                     <option value="<?=$idbarangnya;?>">
+                                   <?=$kategorinya;?>
                                    <?=$jenisnya;?>
+                                   <?=$merk;?>
                     </option>
                 
                 <?php
@@ -356,9 +366,16 @@ require 'cek.php';
                 ?>
             </select>
             <br>
-            <input type="number" name="qty" placeholder="Quantity" class="form-control" required>
-            <br>
-            <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
+            <!-- <input type="number" name="qty" placeholder="Quantity" class="form-control" required> -->
+            <div class="form-floating mb-3">
+                <input class="form-control" name="qty" type="number" placeholder="Quantity" required>
+                <label>Quantity</label>
+            </div>
+            <!-- <input type="text" name="penerima" placeholder="Penerima" class="form-control" required> -->
+            <div class="form-floating mb-3">
+                <input class="form-control" name="penerima" type="text" placeholder="Penerima" required>
+                <label>Penerima</label>
+            </div>
             <br>
             <div class="modal-footer">
             <button type="submit" class="btn btn-primary" name="barangmasuk">Simpan</button>
