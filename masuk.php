@@ -184,7 +184,7 @@ require 'cek.php';
                             <div class="card-header">
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    Tambah Barang
+                                    Tambah Masukan
                                 </button>
                             </div>
                             <div class="card-body">
@@ -252,16 +252,15 @@ require 'cek.php';
                 <!-- Modal body -->
                 <form method="POST">
                 <div class="modal-body">
+                    <!-- <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required> -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="qty" type="number" placeholder="Quantity" value="<?=$qty;?>" required>
+                        <label>Quantity</label>
+                    </div>
                     <!-- <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control" required> -->
                     <div class="form-floating mb-3">
                         <input class="form-control" name="penerima" type="text" placeholder="Penerima" value="<?=$penerima;?>" required>
                         <label>Penerima</label>
-                    </div>
-                    <br>
-                    <!-- <input type="number" name="qty" placeholder="<?=$qty;?>" class="form-control" required> -->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" name="qty" type="number" placeholder="Quantity" value="<?=$qty;?>">
-                        <label>Quantity</label>
                     </div>
                     <br>
                     <input type="hidden" name="idb" value="<?=$idb;?>">
@@ -339,23 +338,6 @@ require 'cek.php';
         <!-- Modal body -->
         <form method="POST">
         <div class="modal-body">
-            
-            <!-- <select name="kategorinya" class="form-control">
-                <?php
-                    $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM stockbarang");
-                    while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
-                        $kategorinya = $fetcharray['kategori'];
-                        $idbarangnya = $fetcharray['idbarang'];
-                ?>
-                
-                    <option value="<?=$idbarangnya;?>">
-                                   <?=$kategorinya;?>
-                    </option>
-                
-                <?php
-                    }
-                ?>
-            </select> -->
             
             <select name="jenisnya" class="form-control">
                 <?php
