@@ -27,18 +27,23 @@ if(isset($_POST['addstockbarang'])){
 
 //Menambah barang masuk
 if(isset($_POST['barangmasuk'])){
-    $jenisnya = $_POST['jenisnya'];
+    // $jenisnya = $_POST['jenisnya'];
     $penerima = $_POST['penerima'];
-    $qty = $_POST['qty'];
-
+    // $qty = $_POST['qty'];
+    $id = explode(",",$_POST["dataid"][0]);
+    $jumlah = explode(",",$_POST["datajumlah"][0]);
+    
+    
     $cekstocksekarang = mysqli_query($conn,"SELECT * FROM stockbarang WHERE idbarang='$jenisnya'");
     $ambildatanya = mysqli_fetch_array($cekstocksekarang);
     
+    for($i=0;$i<=count($jumlah);$i++){
     $stocksekarang = $ambildatanya['stock'];
-    $tambahkanstocksekarangdenganquantity = $stocksekarang+$qty;
+    $tambahkanstocksekarangdenganquantity = $stocksekarang+$jumlah[$i];
 
-    $addtomasuk = mysqli_query($conn,"INSERT INTO barangmasuk (idbarang, penerima, qty) VALUES('$jenisnya','$penerima','$qty')");
-    $updatestockmasuk = mysqli_query($conn,"UPDATE stockbarang SET stock='$tambahkanstocksekarangdenganquantity' WHERE idbarang='$jenisnya'");
+    $addtomasuk = mysqli_query($conn,"INSERT INTO barangmasuk (idbarang, penerima, qty) VALUES('$id[$i]','$penerima','$jumlah[$i]')");
+    $updatestockmasuk = mysqli_query($conn,"UPDATE stockbarang SET stock='$tambahkanstocksekarangdenganquantity' WHERE idbarang='$id[$i]'");
+    }
     if($addtomasuk && $updatestockmasuk){
         header('location:masuk.php');
     }
@@ -50,18 +55,24 @@ if(isset($_POST['barangmasuk'])){
 
 //Menambah barang keluar
 if(isset($_POST['addbarangkeluar'])){
-    $jenisnya = $_POST['jenisnya'];
+    // $jenisnya = $_POST['jenisnya'];
     $pembeli= $_POST['pembeli'];
-    $jumlah = $_POST['jumlah'];
+    // $jumlah = $_POST['jumlah'];
+     $id = explode(",",$_POST["dataid"][0]);
+     $jumlah = explode(",",$_POST["datajumlah"][0]);
+
 
     $cekstocksekarang = mysqli_query($conn,"SELECT * FROM stockbarang WHERE idbarang='$jenisnya'");
     $ambildatanya = mysqli_fetch_array($cekstocksekarang);
-    
-    $stocksekarang = $ambildatanya['stock'];
-    $tambahkanstocksekarangdenganquantity = $stocksekarang-$jumlah;
 
-    $addtomasuk = mysqli_query($conn,"INSERT INTO barangkeluar (idbarang, pembeli, jumlah) VALUES('$jenisnya','$pembeli','$jumlah')");
-    $updatestockmasuk = mysqli_query($conn,"UPDATE stockbarang SET stock='$tambahkanstocksekarangdenganquantity' WHERE idbarang='$jenisnya'");
+   for($i=0;$i<=count($jumlah);$i++){
+
+        $stocksekarang = $ambildatanya['stock'];
+        $tambahkanstocksekarangdenganquantity = $stocksekarang-$jumlah[$i];
+
+    $addtomasuk = mysqli_query($conn,"INSERT INTO barangkeluar (idbarang, pembeli, jumlah) VALUES('$id[$i]','$pembeli','$jumlah[$i]')");
+    $updatestockmasuk = mysqli_query($conn,"UPDATE stockbarang SET stock='$tambahkanstocksekarangdenganquantity' WHERE idbarang='$id[$i]'");
+    }
     if($addtomasuk && $updatestockmasuk){
         header('location:keluar.php');
     }
@@ -175,7 +186,7 @@ if(isset($_POST['hapusbarangmasuk'])){
 //     $qty = $_POST['qty'];
 //     $idbm = $_POST['idbm'];
 
-//     $truncate = mysqli_query($conn,"TRUNCATE TABLE books FROM barangmasuk;");
+//     $truncate = mysqli_query($conn,"TRUNCATE TABLE barangmasuk;");
 // }
 
 
