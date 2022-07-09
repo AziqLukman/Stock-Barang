@@ -347,7 +347,7 @@ require 'cek.php';
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div class="text-muted">Copyright &copy; Muzakky-Aziq-Aldi</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
@@ -366,7 +366,7 @@ require 'cek.php';
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Barang Keluar</h4>
+                    <h4 class="modal-title">Tambah Pengeluaran Barang</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2022 pada 16.11
+-- Waktu pembuatan: 09 Jul 2022 pada 09.48
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.25
 
@@ -59,10 +59,14 @@ CREATE TABLE `barangkeluar` (
 --
 
 INSERT INTO `barangkeluar` (`idbarangkeluar`, `idbarang`, `tanggal`, `pembeli`, `jumlah`) VALUES
-(1, 5, '2022-06-19 01:27:37', 'Orang', 15),
-(6, 3, '2022-06-19 04:42:04', 'Itu', 15),
-(7, 8, '2022-06-19 08:12:24', 'aku', 20),
-(9, 6, '2022-06-20 05:56:09', 'aku', 3);
+(1, 17, '2022-06-22 15:45:11', 'Aldi', 1),
+(2, 13, '2022-06-22 15:45:11', 'Aldi', 2),
+(8, 6, '2022-06-22 15:51:42', 'Zakky', 5),
+(9, 16, '2022-06-22 15:51:42', 'Zakky', 2),
+(10, 18, '2022-06-22 15:51:42', 'Zakky', 3),
+(12, 5, '2022-06-28 08:01:30', 'Ramadhan', 7),
+(13, 15, '2022-06-28 08:01:30', 'Ramadhan', 3),
+(14, 0, '2022-06-28 08:01:30', 'Ramadhan', 0);
 
 -- --------------------------------------------------------
 
@@ -77,15 +81,6 @@ CREATE TABLE `barangmasuk` (
   `penerima` varchar(50) NOT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `barangmasuk`
---
-
-INSERT INTO `barangmasuk` (`idbarangmasuk`, `idbarang`, `tanggal`, `penerima`, `qty`) VALUES
-(8, 8, '2022-06-19 08:36:09', 'Baihaqi', 40),
-(13, 9, '2022-06-19 13:50:34', 'Indy', 50),
-(14, 6, '2022-06-20 05:11:07', 'Indy', 5);
 
 -- --------------------------------------------------------
 
@@ -106,11 +101,18 @@ CREATE TABLE `stockbarang` (
 --
 
 INSERT INTO `stockbarang` (`idbarang`, `kategori`, `jenis`, `merk`, `stock`) VALUES
-(5, 'Bulpoin', 'Hitam', 'Snowman', 35),
-(6, 'Bulpoin', 'Biru', 'Snowman', 52),
-(7, 'Pensil', 'Biasa', 'Stadler', 40),
-(8, 'Isolasi', 'Bening', 'Cina', 100),
-(9, 'Stipo0', 'Kertass', 'Joyko.', 260);
+(5, 'Pulpen', 'Hitam', 'Snowman', 23),
+(6, 'Pulpen', 'Biru', 'Standard', 25),
+(7, 'Pulpen', 'Merah', 'Standard', 25),
+(10, 'Pensil', '2B', 'Handy', 29),
+(11, 'Pensil', '2B', 'Stadler', 12),
+(12, 'Pensil', '2B', 'Faber-Castell', 7),
+(13, 'Pensil', 'HB', 'Stadler', 5),
+(14, 'Pensil', 'HB', 'Faber-Castell', 10),
+(15, 'Stipo', 'Cair', 'Joyko', 4),
+(16, 'Stipo', 'Kertas', 'Joyko', 3),
+(17, 'Isolasi', 'Bening Kecil', 'Nachi Tape', 8),
+(18, 'Isolasi', 'Hitam Kecil', 'Unibell', 4);
 
 --
 -- Indexes for dumped tables
@@ -154,19 +156,19 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT untuk tabel `barangkeluar`
 --
 ALTER TABLE `barangkeluar`
-  MODIFY `idbarangkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idbarangkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `barangmasuk`
 --
 ALTER TABLE `barangmasuk`
-  MODIFY `idbarangmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idbarangmasuk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `stockbarang`
 --
 ALTER TABLE `stockbarang`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -352,7 +352,7 @@ require 'cek.php';
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div class="text-muted">Copyright &copy; Muzakky-Aziq-Aldi</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
@@ -371,7 +371,7 @@ require 'cek.php';
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Barang Masuk</h4>
+                    <h4 class="modal-title">Tambah Pemasukan Barang</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -404,7 +404,7 @@ require 'cek.php';
                         <div class="form-floating mb-3">
                             <input class="form-control" name="jumlah" id="jumlah" type="number" placeholder="Quantity"
                                 required>
-                            <label>jumlah</label>
+                            <label>Quantity</label>
                         </div>
 
                         <button class="btn btn-success mb-3 " id="btn-add">
